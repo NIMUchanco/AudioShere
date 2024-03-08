@@ -159,6 +159,11 @@ a {
     --gap_large: 1.5em;
     --gap_xlarge: 2em;
 
+    /* box-shadow */
+    --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.13);
+
+    /* transition */
+    --transition: all 0.3s ease;
 }
 
 /* GENERAL */
@@ -176,7 +181,7 @@ body {
 
 main {
     height: 100vh;
-    padding: var(--padding_medium);
+    padding: 0 var(--padding_medium);
 }
 
 h1,
@@ -210,10 +215,11 @@ button,
     border-radius: 8px;
     font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
     box-shadow: var(--box-shadow);
+    transition: var(--transition);
 }
 
-.btn {
-    padding: 0.35rem var(--padding_medium);
+.btn:hover {
+    background-color: var(--primary-color);
 }
 
 /* button:hover {
@@ -251,11 +257,15 @@ button,
     color: var(--primary-color);
 }
 
+.show-menu-icon {
+    cursor: pointer;
+}
+
 /* Show the sidebar when checkbox is checked */
-#menu_toggle:checked~#sidebar {
+/* #menu_toggle:checked~#sidebar {
     left: 0;
     display: block;
-}
+} */
 
 #menu_toggle {
     display: none;
@@ -270,6 +280,10 @@ button,
     background: var(--primary-color);
     transition: left 0.3s ease;
     z-index: 999;
+}
+
+#sidebar.active {
+    left: 0;
 }
 
 #sidebar ul {
@@ -288,7 +302,7 @@ button,
 
 #sidebar li a {
     color: var(--link-color);
-    transition: all 0.3s ease;
+    transition: var(--transition)
 }
 
 #sidebar li a:hover {
@@ -323,6 +337,13 @@ button,
     transform: rotate(-45deg);
 }
 
+#sidebar .close_icon:hover 
+#sidebar .close_icon::before,
+#sidebar .close_icon:hover 
+#sidebar .close_icon::after {
+    background-color: var(--highlight-color);
+}
+
 .logo {
     width: 4.375rem;
     height: 4.375rem;
@@ -335,7 +356,7 @@ button,
     justify-content: space-between;
     align-items: center;
     gap: var(--gap_medium);
-    padding: var(--padding_medium);
+    padding: var(--padding_medium) 0;
     margin-bottom: var(--margin_medium);
 }
 
@@ -346,11 +367,31 @@ button,
     object-fit: cover;
 }
 
-.buttons :nth-last-child(1) {
+.hero_header .buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap_small);
+}
+
+.hero_header .buttons :nth-last-child(1) {
     background-color: var(--primary-color);
     color: var(--button-text-color);
 }
 
+.hero_header .buttons :nth-last-child(1):hover {
+    background-color: var(--button-color);
+}
+
+.hero_header .btn {
+    padding: 0.35rem 0;
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+}
+
+.logout-btn {
+    grid-column: 2 / 3;
+}
 
 /* THIS PART IS COMMENTED TO MAKE THE SLIDER WORK */
 /*
@@ -410,7 +451,7 @@ button,
 
 .slick-prev {
     transform: rotate(180deg);
-    top: 40%;
+    top: 30%;
     left: 0;
     opacity: 0.5;
 }
@@ -420,7 +461,7 @@ button,
 }
 
 .slick-next {
-    top: 40%;
+    top: 30%;
     right: 0;
 }
 
@@ -570,15 +611,20 @@ body.dark-mode .slider:before {
 /* CARD ENDS */
 
 /* audio player */
+.audio-wrapper {
+    display: grid;
+    place-items: center;
+    margin-top: 4em;
+}
 
 .audio-container {
-    background-color: var(--card-background-color);
+    background-color: #b8c1ec;
     width: 100%;
-    height: 100vh;
+    height: auto;
     border-radius: 10px;
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
-    padding: 20px;
+    padding: var(--padding_medium);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -588,7 +634,7 @@ body.dark-mode .slider:before {
 }
 
 .audio-details {
-    padding: 10px 0;
+    padding: var(--padding_medium);
 }
 
 .audio-details h2 {
@@ -601,6 +647,7 @@ body.dark-mode .slider:before {
     margin: 0;
     font-size: 16px;
     color: #666;
+    text-align: justify;
 }
 
 audio {
@@ -608,6 +655,86 @@ audio {
     margin-top: 20px;
 }
 
+.display-box {
+    display: grid;
+    justify-content: center;
+}
+
+.audio-panel {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    place-items: center;
+    gap: var(--gap_xlarge);
+    margin-left: -20px;
+}
+
+#play-icon {
+    font-size: 3rem;
+    color: #C4FFE7;
+    cursor: pointer;
+    transition: var(var(--transition));
+}
+
+#play-icon:hover {
+    color: #a8d6c3;
+}
+
+.audio-panel span {
+    display: inline-block;
+    width: 5px;
+    height: 15px;
+    background-color: #C4FFE7;
+    border-radius: 5px;
+    margin-right: .3em;
+}
+
+.audio-panel span:nth-child(2),
+.audio-panel span:nth-child(5),
+.audio-panel span:nth-child(7),
+.audio-panel span:nth-child(9) {
+    height: 25px;
+}
+
+.audio-panel span:nth-child(4),
+.audio-panel span:nth-child(6),
+.audio-panel span:nth-child(8) {
+    height: 35px;
+}
+
+.audio-panel.active span {
+    animation: wave1 1s ease-in-out infinite alternate;
+}
+
+.audio-panel.active span:nth-child(2),
+.audio-panel.active span:nth-child(5),
+.audio-panel.active span:nth-child(7),
+.audio-panel.active span:nth-child(9) {
+    animation: wave2 1s ease-in-out infinite alternate;
+}
+
+.audio-panel.active span:nth-child(4),
+.audio-panel.active span:nth-child(6),
+.audio-panel.active span:nth-child(8) {
+    animation: wave3 1s ease-in-out infinite alternate;
+}
+
+@keyframes wave1 {
+    100% {
+        height: 25px;
+    }
+}
+
+@keyframes wave2 {
+    100% {
+        height: 35px;
+    }
+}
+
+@keyframes wave3 {
+    100% {
+        height: 15px;
+    }
+}
 
 /** SUCCESS PAGE **/
 
@@ -665,11 +792,6 @@ audio {
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 470px) {
-    .image_container img {
-        height: 110px;
-        min-width: 110px;
-    }
-
     .image_container .text {
         font-size: 12px;
     }
@@ -695,6 +817,15 @@ audio {
 
     .hero_header img {
         display: none;
+    }
+
+    .hero_header .buttons {
+        gap: var(--gap_medium);
+    }
+    
+    .hero_header .btn {
+        width: 100px;
+        padding: 0.55rem 0;
     }
 
     .home_menu .menu_icon {

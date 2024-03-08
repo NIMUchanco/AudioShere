@@ -5,37 +5,6 @@
 }
 
 :root {
-  /* colors */
-  --background-color-dark_mode: #232946;
-  --headline-color-dark_mode: #fffffe;
-  --paragraph-color-dark_mode: #b8c1ec;
-  --button-color-dark_mode: #eebbc3;
-  --button-text-color-dark_mode: #232946;
-  --link-color-dark_mode: ;
-
-
-  --stroke-color-dark_mode: #121629;
-  --main-color-dark_mode: #b8c1ec;
-  --highlight-color-dark_mode: #eebbc3;
-  --primary-color-dark_mode: #fffffe;
-  --secondary-color-dark_mode: #eebbc3;
-
-
-  --background-color: #d4d8f0;
-  --headline-color: #232946;
-  --paragraph-color: #232946;
-  --card-background-color: #fffffe;
-  --button-color: #eebbc3;
-  --button-text-color: #232946;
-  --link-color: #232946;
-
-
-  --stroke-color: #121629;
-  --main-color: #b8c1ec;
-  --highlight-color: #eebbc3;
-  --primary-color: #fffffe;
-  --secondary-color: #eebbc3;
-
   /* margins */
   --small-margin: 10px;
   --medium-margin: 15px;
