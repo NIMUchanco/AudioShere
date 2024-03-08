@@ -30,9 +30,9 @@ include __DIR__ . '/../controllers/controller-search.php';
         <?php
            
             foreach ($categories as $category) {
-                echo '<div class="category_card">';
-                echo '<h4><a href="../controllers/controller-audiolist.php?category=' . $category['audioCategoryID'] . '">' . $category['audioCategory'] . '</a></h4>';
-                echo '</div>';
+                echo '<a href="../controllers/controller-audiolist.php?category=' . $category['audioCategoryID'] . '">';
+                echo '<h4>' . $category['audioCategory'] . '</h4>';
+                echo '</a>';
             }
             ?>
 

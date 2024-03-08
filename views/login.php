@@ -22,26 +22,33 @@
 
 <body>
     <main>
+        <header class="hero_header" style="position: fixed;">
+            <figure>
+                <a href="../index.php"><img id="logo" src="../assets/images/audioSphere_logo_light_mode.png" alt="logo"></a>
+            </figure>
+        </header>
         <div class="home_menu">
-            <input type="checkbox" id="menu_toggle" />
-            <label for="menu_toggle" class="menu_icon">
-                <span class="navicon"><i class="fas fa-home"></i></span>
-                <a href="view-search.php"><i class="fas fa-search"></i></a>
-                <a href="view-myplaylist.php"><i class="fa-solid fa-list-ul"></i></a>
-                <a href="view-myplaylist.php"><i class="fa-solid fa-user-gear"></i></a>
+            <div class="menu_icon">
+                <a class="show-menu-icon"><i class="fa-solid fa-list-ul"></i></a>
+                <a href="../index.php" class="navicon"><i class="fas fa-home"></i></a>
+                <a href="../views/view-search.php"><i class="fas fa-search"></i></a>
+                <a href="../views/view-myplaylist.php"><i class="fa-solid fa-user-gear"></i></a>
                 <label class="switch">
                     <input type="checkbox" id="modeToggle">
                     <span class="slider"></span>
                 </label>
-            </label>
+                </div>
 
             <nav id="sidebar" class="menu">
-                <div class="logo"><img src="../assets/images/audioSphere_logo_light_mode.png" alt="" srcset=""></div>
+                <div class="logo">
+                    <a href="../index.php"><img src="../assets/images/audioSphere_logo_light_mode.png" alt="" srcset=""></a>
+                </div>
 
                 <ul>
-                    <li><a href="view-search.php">search</a></li>
+
+                    <li><a href="../views/view-search.php">search</a></li>
                     <li><a href="../index.php">home</a></li>
-                    <li><a href="view-myplaylist.php">my playlist</a></li>
+                    <li><a href="../views/view-myplaylist.php">my playlist</a></li>
 
                     <div>
                         <li>featured stories</li>
@@ -58,7 +65,7 @@
                         <li>create</li>
                     </div>
                 </ul>
-                <label for="menu_toggle" class="close_icon"></label>
+                <div class="close_icon"></div>
             </nav>
         </div>
 
