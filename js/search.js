@@ -1,15 +1,17 @@
 const inputBox = document.querySelector(".input-box");
 const resultsBox = document.querySelector(".result-box");
 
-inputBox.addEventListener("input", function () {
-    let input = inputBox.value.trim();
-
-    if (input.length) {
-        searchAudio(input);
-    } else {
-        resultsBox.innerHTML = ''; // Clear results if input is empty
-    }
-});
+if (inputBox) {
+    inputBox.addEventListener("input", function () {
+        let input = inputBox.value.trim();
+    
+        if (input.length) {
+            searchAudio(input);
+        } else {
+            resultsBox.innerHTML = ''; // Clear results if input is empty
+        }
+    });
+}
 
 async function searchAudio(keyword) {
     try {
